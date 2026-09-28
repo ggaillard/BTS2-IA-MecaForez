@@ -1,0 +1,33 @@
+name: "Séance 2 – Livrables de mesure"
+
+on:
+  push:
+    paths: ["seance-02-mesurer/depart/**", ".github/workflows/seance-02.yml"]
+  pull_request:
+    paths: ["seance-02-mesurer/depart/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  livrables:
+    name: "📏 Banc testé, livrables complets"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: seance-02-mesurer/depart
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: "🐍 Python 3.12"
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: "🧪 Le banc compte juste (tests sans Ollama)"
+        run: python -m unittest tests_banc -v
+
+      - name: "📋 Les livrables sont complets"
+        run: python banc.py verifier
