@@ -1,0 +1,15 @@
+{
+  "name": "🏭 Méca Forez — séances IA",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-10.0",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit",
+        "GitHub.copilot-chat",
+        "CucumberOpen.cucumber-official",
+        "yzhang.markdown-all-in-one"
+      ]
+    }
+  },
+  "postCreateCommand": "dotnet restore seance-01-specifier/depart/PretsMateriel.slnx"
+}
